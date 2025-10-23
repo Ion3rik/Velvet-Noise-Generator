@@ -9,6 +9,25 @@ MyAudioProcessor::MyAudioProcessor() :
     
 {
     // Register parameter callbacks here
+
+    paramManager.registerParameterCallback(Param::ID::Enabled,
+    [this](float newValue, bool force)
+    {
+        velvetNoiseGenerator.setEnabled(static_cast<bool>(static_cast<int>(newValue)));
+    });
+
+    paramManager.registerParameterCallback(Param::ID::Density,
+    [this](float newValue, bool force)
+    {
+        velvetNoiseGenerator.setDensity(newValue);
+    });
+
+    paramManager.registerParameterCallback(Param::ID::PulseWidth,
+    [this](float newValue, bool force)
+    {
+        velvetNoiseGenerator.setPulseWidth(newValue);
+    });
+
     paramManager.registerParameterCallback(Param::ID::Gain,
     [this](float newValue, bool force)
     {
@@ -24,6 +43,7 @@ MyAudioProcessor::~MyAudioProcessor()
 void MyAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     smoothedGain.prepare(sampleRate, Param::Value::RampTimeS, Param::Range::GainDef);
+    velvetNoiseGenerator.prepare(sampleRate);
 }
 
 void MyAudioProcessor::releaseResources()
@@ -39,6 +59,10 @@ void MyAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Midi
     const unsigned int numChannels{ static_cast<unsigned int>(buffer.getNumChannels()) };
     const unsigned int numSamples{ static_cast<unsigned int>(buffer.getNumSamples()) };
 
+    // Generate velvet noise
+    velvetNoiseGenerator.process(buffer.getArrayOfWritePointers(), numChannels, numSamples);
+
+    // Apply smoothed gain
     smoothedGain.applyGain(buffer, numSamples);
 
 }

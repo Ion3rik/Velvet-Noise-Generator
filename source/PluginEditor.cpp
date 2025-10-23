@@ -6,7 +6,11 @@ MyAudioProcessorEditor::MyAudioProcessorEditor(MyAudioProcessor& p)
     genericParamEditor(audioProcessor.getParameterManager())
     
 {
+    unsigned int numParams { static_cast<unsigned int>(audioProcessor.getParameterManager().getParameters().size()) };
+    unsigned int paramHeight { static_cast<unsigned int>(genericParamEditor.parameterWidgetHeight) };
 
+    addAndMakeVisible(genericParamEditor);
+    setSize(500, numParams * paramHeight);
 }
 
 
@@ -24,5 +28,5 @@ void MyAudioProcessorEditor::paint(juce::Graphics& g)
 
 void MyAudioProcessorEditor::resized()
 {
-   
+    genericParamEditor.setBounds(getLocalBounds());
 }

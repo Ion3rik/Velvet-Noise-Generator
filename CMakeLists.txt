@@ -19,7 +19,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0")
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # Define project
-project(MyAwesomePlugins
+project(JonssonicPlugins
     VERSION 0.0.1
     LANGUAGES C CXX)
 
@@ -48,10 +48,10 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/dependencies/JUCE)
 juce_add_module(${CMAKE_CURRENT_SOURCE_DIR}/modules/mrta_utils)
 
 # Variables for vendor information
-set(company_name "My Awesome Plugins OY")
-set(company_copyright "My Awesome Plugins OY © 2025")
-set(company_code "MYAP")
-set(company_bundle_id "com.MyAwesomePlugins")
+set(company_name "Jonssonic")
+set(company_copyright "Jonssonic © 2025")
+set(company_code "JSSC")
+set(company_bundle_id "com.Jonssonic")
 
 # This function adds a JUCE plugin target to this project
 # Arguments:
@@ -142,17 +142,19 @@ set(utils_source ${CMAKE_CURRENT_SOURCE_DIR}/source/Utils)
 
 add_plugin(root_source
     VERSION 0.1.0
-    PLUGIN_NAME "My Awesome Plugin"
-    PROD_NAME MyAwesomePlugin
-    PROD_CODE MAPL
+    PLUGIN_NAME "Velvet Noise Generator"
+    PROD_NAME VelvetNoiseGenerator
+    PROD_CODE VNGE
     SYNTH FALSE # if synth set to true, otherwise false
     SOURCES
         ${root_source}/PluginEditor.cpp
         ${root_source}/PluginProcessor.cpp
+        ${dsp_source}/VelvetNoiseGenerator.cpp
 
     INCLUDE_DIRS
         ${dsp_source}
-        ${utility_source}
+        ${utils_source}
+
 
     
 )

@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "Utils/SmoothedGain.h"
+#include "DSP/VelvetNoiseGenerator.h"
 
 
 class MyAudioProcessor : public juce::AudioProcessor
@@ -38,6 +39,8 @@ private:
 
     Utils::SmoothedGain smoothedGain;
     mrta::ParameterManager paramManager;
+
+    DSP::VelvetNoiseGenerator velvetNoiseGenerator;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MyAudioProcessor)
 };
