@@ -32,9 +32,11 @@ class VelvetNoiseGenerator
         unsigned int gridSize { 24 }; // grid size in samples
         float gain { 1.0f }; // current gain of the pulse
         int sign { 1 }; // current sign of the pulse
+        int alternator { 1 }; // current alternator state of the pulse
         unsigned int location { 0 }; // current location of the pulse
         unsigned int gridPhase { 0 }; // current phase within the grid
         float regularity { 0.0f }; // regularity of the pulse locations and signs (0 = fully random, 100 = fully regular)
+    
         juce::Random rd; // random number generator
 
 

@@ -74,8 +74,13 @@ void VelvetNoiseGenerator::updatePulse()
     // Only generate a new pulse at grid start
     unsigned int update = (gridPhase == 0);
 
-    location = update * rd.nextInt(static_cast<int>((1-regularity)*(gridSize - relativePulseWidthToSamples(pulseWidth)))+1) + (1 - update) * location; // update location
-    sign = update * (2*static_cast<int>(rd.nextBool())-1)+ (1 - update) * sign; // update sign
+    // Pulse location update with regularity control
+    location = update * rd.nextInt(static_cast<int>((1-regularity)*(gridSize - relativePulseWidthToSamples(pulseWidth)))+1) + (1 - update) * location;
+    
+    // Pulse sign update with regularity control
+    int blendedSign = (1-regularity) * (2*static_cast<int>(rd.nextBool())-1) + regularity * (-sign);
+    int newSign = (blendedSign >= 0.0f) ? 1 : -1;
+    sign = update * newSign + (1 - update) * sign;
     
 }
 
