@@ -64,12 +64,17 @@ void VelvetNoiseGenerator::setPulseWidth(float width)
 
 }
 
+void VelvetNoiseGenerator::setRegularity(float regularity)
+{
+    this->regularity = regularity*0.01; // regularity in [0,1] for 0–100%
+}
+
 void VelvetNoiseGenerator::updatePulse()
 {
     // Only generate a new pulse at grid start
     unsigned int update = (gridPhase == 0);
 
-    location = update * rd.nextInt(static_cast<int>(gridSize - relativePulseWidthToSamples(pulseWidth))) + (1 - update) * location; // update location
+    location = update * rd.nextInt(static_cast<int>((1-regularity)*(gridSize - relativePulseWidthToSamples(pulseWidth)))+1) + (1 - update) * location; // update location
     sign = update * (2*static_cast<int>(rd.nextBool())-1)+ (1 - update) * sign; // update sign
     
 }

@@ -16,6 +16,7 @@ class VelvetNoiseGenerator
         void setEnabled(bool enabled);
         void setDensity(float density);
         void setPulseWidth(float width);
+        void setRegularity(float regularity);
 
     private:
         void updatePulse();
@@ -33,6 +34,7 @@ class VelvetNoiseGenerator
         int sign { 1 }; // current sign of the pulse
         unsigned int location { 0 }; // current location of the pulse
         unsigned int gridPhase { 0 }; // current phase within the grid
+        float regularity { 0.0f }; // regularity of the pulse locations and signs (0 = fully random, 100 = fully regular)
         juce::Random rd; // random number generator
 
 

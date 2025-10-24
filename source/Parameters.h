@@ -10,6 +10,7 @@ namespace Param
         static const juce::String Gain { "gain" };
         static const juce::String PulseWidth { "pulseWidth" };
         static const juce::String Density { "density" };
+        static const juce::String Regularity { "regularity" };
     }
 
     namespace Name
@@ -18,6 +19,7 @@ namespace Param
         static const juce::String Gain { "Gain" };
         static const juce::String PulseWidth { "Pulse Width" };
         static const juce::String Density { "Density" };
+        static const juce::String Regularity { "Regularity" };
     }
     namespace Unit
     {
@@ -49,6 +51,12 @@ namespace Param
         static constexpr float DensityMax { 10000.f };
         static constexpr float DensityInc { 0.01f };
         static constexpr float DensitySkew { 0.5f };
+
+        static constexpr float RegularityDef { 0.f };
+        static constexpr float RegularityMin { 0.f };
+        static constexpr float RegularityMax { 100.f };
+        static constexpr float RegularityInc { 0.1f };
+        static constexpr float RegularitySkew { 1.f };
     }
 
     namespace Value
@@ -63,7 +71,8 @@ namespace Param
             { Param::ID::Enabled,  Param::Name::Enabled,  Param::Range::EnabledOff, Param::Range::EnabledOn, false },
             { Param::ID::Gain, Param::Name::Gain, Param::Unit::dB, Param::Range::GainDef, Param::Range::GainMin, Param::Range::GainMax, Param::Range::GainInc, Param::Range::GainSkew },
             { Param::ID::Density, Param::Name::Density, Param::Unit::PulsePerS, Param::Range::DensityDef, Param::Range::DensityMin, Param::Range::DensityMax, Param::Range::DensityInc, Param::Range::DensitySkew },
-            { Param::ID::PulseWidth, Param::Name::PulseWidth, Param::Unit::Percent, Param::Range::PulseWidthDef, Param::Range::PulseWidthMin, Param::Range::PulseWidthMax, Param::Range::PulseWidthInc, Param::Range::PulseWidthSkew }
+            { Param::ID::PulseWidth, Param::Name::PulseWidth, Param::Unit::Percent, Param::Range::PulseWidthDef, Param::Range::PulseWidthMin, Param::Range::PulseWidthMax, Param::Range::PulseWidthInc, Param::Range::PulseWidthSkew },
+            { Param::ID::Regularity, Param::Name::Regularity, Param::Unit::Percent, Param::Range::RegularityDef, Param::Range::RegularityMin, Param::Range::RegularityMax, Param::Range::RegularityInc, Param::Range::RegularitySkew }
         };
 
         return paramVector;

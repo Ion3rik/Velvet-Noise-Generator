@@ -34,6 +34,12 @@ MyAudioProcessor::MyAudioProcessor() :
         smoothedGain.setTargetGain(newValue);
     });
 
+    paramManager.registerParameterCallback(Param::ID::Regularity,
+    [this](float newValue, bool force)
+    {
+        velvetNoiseGenerator.setRegularity(newValue);
+    });
+
 }
 
 MyAudioProcessor::~MyAudioProcessor()
