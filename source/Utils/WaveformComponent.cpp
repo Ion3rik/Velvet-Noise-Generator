@@ -38,7 +38,8 @@ void WaveformComponent::timerCallback()
 void WaveformComponent::paint(juce::Graphics& g)
 {
     g.fillAll(juce::Colours::black);
-    g.setColour(juce::Colours::white);
+    g.setColour(juce::Colour::fromRGB(181, 114, 174)); // R, G, B values (0–255)
+
 
     auto w = getWidth();
     auto h = getHeight();

@@ -59,7 +59,7 @@ void MyAudioProcessorEditor::timerCallback()
     for (int i = 0; i < numSamples; ++i)
     {
         int idx = (writePos + fifo.getNumSamples() - numSamples + i) % fifo.getNumSamples();
-        temp[i] = 10.0f * fifo.getSample(0, idx);
+        temp[i] = 10.0f * fifo.getSample(0, idx); // Scale for visibility
     }
 
     waveform.pushSamples(temp.data(), numSamples);

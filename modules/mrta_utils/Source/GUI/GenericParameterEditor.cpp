@@ -64,7 +64,7 @@ GenericParameterEditor::GenericParameterEditor(mrta::ParameterManager& parameter
 
 void GenericParameterEditor::paint(juce::Graphics& g)
 {
-    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
+    //g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 }
 void GenericParameterEditor::resized()
 {
