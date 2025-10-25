@@ -50,6 +50,7 @@ void MyAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     smoothedGain.prepare(sampleRate, Param::Value::RampTimeS, Param::Range::GainDef);
     velvetNoiseGenerator.prepare(sampleRate);
+    fifoBuffer.clear();
 }
 
 void MyAudioProcessor::releaseResources()
@@ -71,6 +72,19 @@ void MyAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Midi
     // Apply smoothed gain
     smoothedGain.applyGain(buffer, numSamples);
 
+    auto* channelData = buffer.getReadPointer(0);
+
+    for (int i = 0; i < buffer.getNumSamples(); ++i)
+        pushNextSampleIntoFifo(channelData[i]);
+
+}
+
+void MyAudioProcessor::pushNextSampleIntoFifo(float sample)
+{
+    int pos = fifoWritePosition.load(std::memory_order_relaxed);
+    fifoBuffer.setSample(0, pos, sample);
+    pos = (pos + 1) % fifoBuffer.getNumSamples();
+    fifoWritePosition.store(pos, std::memory_order_release);
 }
 
 void MyAudioProcessor::getStateInformation(juce::MemoryBlock& destData)

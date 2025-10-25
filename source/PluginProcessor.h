@@ -34,13 +34,17 @@ public:
     void changeProgramName(int, const juce::String&) override;
     //==============================================================================
     
-
+    juce::AbstractFifo fifo { 48000 }; // Example: 1 second of mono data
+    juce::AudioBuffer<float> fifoBuffer { 1, 48000 };
+    std::atomic<int> fifoWritePosition { 0 };
 private:
 
     Utils::SmoothedGain smoothedGain;
     mrta::ParameterManager paramManager;
 
     DSP::VelvetNoiseGenerator velvetNoiseGenerator;
+    void pushNextSampleIntoFifo(float sample);
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MyAudioProcessor)
 };

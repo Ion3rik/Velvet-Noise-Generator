@@ -150,6 +150,7 @@ add_plugin(root_source
         ${root_source}/PluginEditor.cpp
         ${root_source}/PluginProcessor.cpp
         ${dsp_source}/VelvetNoiseGenerator.cpp
+        ${utils_source}/WaveformComponent.cpp
 
     INCLUDE_DIRS
         ${dsp_source}
