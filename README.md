@@ -12,6 +12,14 @@ A velvet noise generator plugin
 - Regularity – Regularity of the pulse placement and signs (0 = fully random, 1 = fully regular)
 
 ---
+## Downloads
+
+### macOS Universal Binary
+- VST3 + AU + Standalone included
+- Works on Intel and Apple Silicon Macs
+- [Download VelvetNoiseGenerator v0.1 (macOS)](https://github.com/Ion3rik/Velvet-Noise-Generator/releases/download/v0.1/VelvetNoiseGenerator-v0.1-mac.zip)
+
+---
 
 ## Build Requirements
 
