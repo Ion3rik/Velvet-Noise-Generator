@@ -21,7 +21,9 @@ A velvet noise generator plugin
 
 ---
 
-## Build Requirements
+## Build 
+
+### Requirements
 
 - C++17 compiler (Clang, GCC, MSVC)  
 - CMake 3.21+
@@ -29,7 +31,7 @@ A velvet noise generator plugin
 
 ---
 
-## Setup
+### Setup
 
 Clone the repository:
 
@@ -38,7 +40,7 @@ git clone --recurse-submodules https://github.com/Ion3rik/Velvet-Noise-Generator
 cd Velvet-Noise-Generator
 ```
 
-## Configure and Build
+### Configure and Build
 
 ```bash
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
