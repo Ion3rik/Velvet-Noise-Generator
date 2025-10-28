@@ -6,6 +6,8 @@ MyAudioProcessorEditor::MyAudioProcessorEditor(MyAudioProcessor& p)
     genericParamEditor(audioProcessor.getParameterManager())
     
 {
+
+    setLookAndFeel(&velvetLookAndFeel); // Set custom look and feel
     unsigned int numParams { static_cast<unsigned int>(audioProcessor.getParameterManager().getParameters().size()) };
     unsigned int paramHeight { static_cast<unsigned int>(genericParamEditor.parameterWidgetHeight) };
 

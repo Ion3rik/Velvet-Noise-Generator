@@ -139,6 +139,7 @@ endfunction(add_plugin)
 set(root_source ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(dsp_source ${CMAKE_CURRENT_SOURCE_DIR}/source/DSP)
 set(utils_source ${CMAKE_CURRENT_SOURCE_DIR}/source/Utils)
+set(gui_source ${CMAKE_CURRENT_SOURCE_DIR}/source/GUI)
 
 add_plugin(root_source
     VERSION 0.1.0
@@ -155,6 +156,7 @@ add_plugin(root_source
     INCLUDE_DIRS
         ${dsp_source}
         ${utils_source}
+        ${gui_source}
 
 
     
