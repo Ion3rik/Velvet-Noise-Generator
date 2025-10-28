@@ -1,17 +1,19 @@
-# Audio Plugin Template
+# Velvet Noise Generator
 
-A minimal template for creating audio plugins with JUCE and CMake.
-
----
-
-## Features
-
-- Cross-platform audio plugin template (VST3, AU, etc.)  
-- CMake-based build system  
+A velvet noise generator plugin
 
 ---
 
-## Requirements
+## GUI Controls
+
+- Gain – Output Volume in dB
+- Density – Pulses/s
+- Pulse Width – Width of each velvet pulse in percentage of the grid size
+- Regularity – Regularity of the pulse placement and signs (0 = fully random, 1 = fully regular)
+
+---
+
+## Build Requirements
 
 - C++17 compiler (Clang, GCC, MSVC)  
 - CMake 3.21+
@@ -24,8 +26,8 @@ A minimal template for creating audio plugins with JUCE and CMake.
 Clone the repository:
 
 ```bash
-git clone --recurse-submodules https://github.com/Ion3rik/Audio-Plugin-Template.git
-cd Audio-Plugin-Template
+git clone --recurse-submodules https://github.com/Ion3rik/Velvet-Noise-Generator.git
+cd Velvet-Noise-Generator
 ```
 
 ## Configure and Build
