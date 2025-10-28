@@ -33,7 +33,7 @@ cd Velvet-Noise-Generator
 ## Configure and Build
 
 ```bash
-cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 ninja -C build
 ```
 
